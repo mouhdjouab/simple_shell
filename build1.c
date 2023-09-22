@@ -40,7 +40,6 @@ int dir_change(t_info *info)
 {
 char *s, *dir, buffer[1024];
 int ch_dir_ret;
-
 s = getcwd(buffer, 1024);
 if (!s)
 puts_print("TODO: >>getcwd failure emsg here<<\n");
@@ -74,10 +73,11 @@ print_inputs_to_stderr(info->argv[1]), print_char_to_stderr('\n');
 }
 else
 {
-init_set_environment_variable(info, "OLDPWD", get_environment_variable(info, "PWD="));
-init_set_environment_variable(info, "PWD", getcwd(buffer, 1024));
-}
-return (0);
+init_set_environment_variable(info,
+		"OLDPWD", get_environment_variable(info, "PWD="));
+init_set_environment_variable(info,
+		"PWD", getcwd(buffer, 1024));
+}	return (0);
 }
 
 /**

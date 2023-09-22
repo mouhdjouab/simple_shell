@@ -100,7 +100,9 @@ k++;
 if (!k)
 return;
 
-path = path_finder(info, get_environment_variable(info, "PATH="), info->argv[0]);
+path = path_finder(info,
+		get_environment_variable(info, "PATH="),
+		info->argv[0]);
 if (path)
 {
 info->path = path;

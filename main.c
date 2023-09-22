@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
-* Entry point for the shell program.
-*
-* @param ac Argument count
-* @param av Argument vector
-* @return Returns 0 on success, 1 on error
-*/
+ * main - entry point
+ * @ac: arg count
+ * @av: arg vector
+ *
+ * Return: 0 on success, 1 on error
+ */
 int main(int ac, char **av)
 {
 t_info info[] = { INFO_INIT };

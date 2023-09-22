@@ -55,7 +55,6 @@ static char *buf;
 static size_t i, j, len;
 ssize_t bytesRead = 0;
 char **buf_p = &(info->arg), *p;
-
 put_print_char(BUF_FLUSH);
 bytesRead = buffer_reader(info, &buf, &len);
 if (bytesRead == -1)
@@ -64,7 +63,6 @@ if (len)
 {
 j = i;
 p = buf + i;
-
 chain_checker(info, buf, &j, i, len);
 while (j < len)
 {
@@ -72,18 +70,15 @@ if (delim_chain_checker(info, buf, &j))
 break;
 j++;
 }
-
 i = j + 1;
 if (i >= len)
 {
 i = len = 0;
 info->cmd_buf_type = CMD_NORM;
 }
-
 *buf_p = p;
 return (stringlength(p));
 }
-
 *buf_p = buf;
 return (bytesRead);
 
@@ -111,8 +106,7 @@ return (bytesRead);
 * line_getter - Gets the next line of input from standard input.
 * @info: Parameter struct containing shell information.
 * @ptr: Address of a pointer to the buffer (preallocated or NULL).
-* @length: Size of the preallocated buffer if not NULL.
-*
+* @length: Size of the preallocated buffer if not NULL.*
 * Return: Number of bytes read.
 */
 int line_getter(t_info *info, char **ptr, size_t *length)
@@ -122,32 +116,26 @@ static size_t i, len;
 size_t k;
 ssize_t r = 0, s = 0;
 char *p = NULL, *new_p = NULL, *c;
-
 p = *ptr;
 if (p && length)
 s = *length;
 if (i == len)
 i = len = 0;
-
 r = buffer_reader_fromfd(info, buf, &len);
 if (r == -1 || (r == 0 && len == 0))
 return (-1);
-
 c = locate_char(buf + i, '\n');
 k = c ? 1 + (unsigned int)(c - buf) : len;
 new_p = realloc_memory(p, s, s ? s + k : k + 1);
 if (!new_p)
 return (p ? free(p), -1 : -1);
-
 if (s)
 stringconcatenate_byn(new_p, buf + i, k - i);
 else
 stringcopy_byn(new_p, buf + i, k - i + 1);
-
 s += k - i;
 i = k;
 p = new_p;
-
 if (length)
 *length = s;
 *ptr = p;
