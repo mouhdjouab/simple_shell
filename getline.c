@@ -81,7 +81,7 @@ return (stringlength(p));
 }
 *buf_p = buf;
 return (bytesRead);
-
+}
 /**
 * buffer_reader_fromfd - Reads a buffer from a file descriptor.
 * @info: Parameter struct containing shell information.
