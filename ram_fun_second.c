@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * free_pointer - frees a pointer and NULLs the address
- * @ptr: address  pointer to be free
- *
- * Return: 1 if freed, otherwise 0.
- */
+* free_pointer - frees a pointer and NULLs the address
+* @ptr: address	pointer to be free
+*
+* Return: 1 if freed, otherwise 0.
+*/
 int free_pointer(void **ptr)
 {
-	if (ptr && *ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-		return (1);
-	}
-	return (0);
+if (ptr && *ptr)
+{
+free(*ptr);
+*ptr = NULL;
+return (1);
+}
+return (0);
 }
